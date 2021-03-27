@@ -3,4 +3,5 @@
 *.layout
 bin/**/*.EXE
 obj/**/*.o
+obj/**/*.res
 
