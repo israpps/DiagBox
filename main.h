@@ -75,11 +75,18 @@ void print_help(void)
     cout << "Made by Matias israelson (Aka: El_isra)"<<endl;
     cout << "===================================================="<< endl;
     COLOR_INT(7);
+    COLOR_INT(15);
     cout << "usage of this Program:\n\n";
     cout << "to see the available colors\n";
+    COLOR_INT(7);
     cout << exename << " " << CMD_COLORS <<endl<<endl<<endl;
+    COLOR_INT(15);
     cout << "to change the color\n";
-    cout << exename << " " << CMD_GD << " $COLOR_CODE"<<endl;
+    COLOR_INT(7);
+    cout << exename << " " << CMD_GD;
+    COLOR_INT(12);
+    cout << " $COLOR_CODE"<<endl;
+    COLOR_INT(7);
     cin.ignore();
 }
 
