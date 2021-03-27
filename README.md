@@ -8,7 +8,7 @@ this can only be done by the CMD.EXE on it's own in windows 10 (its horrible sin
 ```bash
 DiagBox.EXE gd <HEX_COLOR_CODE> 
 ```
-
+ 
 
 the "HEX_COLOR_CODE' refers to a pair of HEX digits.
     it works the same way that color command, you must pass two HEX digits, the first one will be the BG and the second one will be the Text color
