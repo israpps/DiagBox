@@ -7,6 +7,7 @@
 #include <iomanip>
 //-------------------//
 ///""
+#include "diagbox.h"
 #include "version.h"
 #include "exename.h"
 //-------------------//
@@ -23,8 +24,7 @@ string exename;
 #define CMD_COLORS "colors" ///shows all 255 colors
 #define CMD_HELP "help" ///quite self explanatory
 
-#define COLOR_INT(args) SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),args);
-#define COLOR_HEX(args) SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),stoi_with_hex(args));
+
 ///FUNCTIONS
 //---------------------------
 int stoi_with_hex(string original)
