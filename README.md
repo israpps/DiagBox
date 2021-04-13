@@ -52,3 +52,8 @@ for example:
 `color 00` will fail
 
 while `diagbox.exe gd 00` will work
+
+# lib
+
+if you want to use this inside your program simpley #include [__diagbox.h__](https://github.com/israpps/DiagBox/blob/main/diagbox.h) on your program and use one of the macros declared inside
+
