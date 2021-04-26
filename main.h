@@ -47,16 +47,16 @@ void show_colors ()
     while (x<=255)
     {
         SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),x);
-            if (x <= 15)
+            if (x <= 15) //on the first row...
             {
                 cout << setw(2);
-             cout << 0;
+             cout << 0; //...Prepend a '0'
             }
             else
             cout << setw(3);
         cout << std::hex  << x ;
         x++;
-        if ( (x % 16) ==0 )
+        if ( (x % 16) ==0 )//split based on background color
             cout << endl;
     }
     SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),07);
