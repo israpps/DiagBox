@@ -24,10 +24,9 @@ int main(int argc, char* argv[])
 ///---------------------------------///
 
 
-    if (argvS[1]==CMD_GD)
-        if (argc <=2)
+    if ( (argc <=2) && (argvS[1]==CMD_GD) )
             cout << "missing argument...\nenter the comand: \"" << exename << " help\" to learn how to use this\n";
-            else
+    if ( (argc >= 3) && (argv[1]==CMD_GD) )
             COLOR_HEX(argvS[2]);
 
 
