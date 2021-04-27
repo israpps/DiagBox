@@ -4,6 +4,7 @@
 #include <iostream>
 #include <windows.h>
 #include <string>
+#include <string.h>
 #include <iomanip>
 //-------------------//
 ///""
@@ -50,7 +51,7 @@ void show_colors ()
             if (x <= 15) //on the first row...
             {
                 cout << setw(2);
-             cout << 0; //...Prepend a '0'
+             cout << 0; //...Prepend a '0' (black background)
             }
             else
             cout << setw(3);
@@ -73,6 +74,7 @@ void print_help(void)
     cout << "Diagbox version [" << AutoVersion::FULLVERSION_STRING << "]-[" << AutoVersion::STATUS << "]"<<endl;
     cout << "build:" << AutoVersion::YEAR <<"-"<< AutoVersion::MONTH <<"-"<< AutoVersion::DATE<<endl;
     cout << "Made by Matias israelson (Aka: El_isra)"<<endl;
+    cout << "https://github.com/israpps/DiagBox\n";
     cout << "===================================================="<< endl;
     COLOR_INT(7);
     COLOR_INT(15);

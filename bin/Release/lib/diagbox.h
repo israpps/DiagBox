@@ -11,7 +11,6 @@
 	#include <windows.h>
 	#define COLOR_INT(args) SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),args);
 	#define COLOR(args) SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),stoi(#args,0,16));
-	#define COLOR_STRING(args) SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),stoi(args,0,16));
 #else
 	#define COLOR_INT(args) std::cout <<"";
 	#define COLOR(args) std::cout <<"";
