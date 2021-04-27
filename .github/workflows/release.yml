@@ -32,14 +32,14 @@ jobs:
       if: ${{ success() }}
       uses: actions/upload-artifact@v2
       with:
-        name: HDL-INST
+        name: DiagBox
         path: |
              bin/*.zip
     - name: Create release
       uses: marvinpinto/action-automatic-releases@latest
       with:
         repo_token: "${{ secrets.GITHUB_TOKEN }}"
-        automatic_release_tag: "experimental"
-        title: "Latest Experimental Repack"
+        automatic_release_tag: "Latest"
+        title: "Latest Release"
         files: |
                 bin/*.zip
