@@ -32,7 +32,7 @@ D|purple (bright)
 E|yellow (bright)
 F|white (bright)
 
-![Examples](https://github.com/israpps/DiagBox/tree/main/gitimages/CMD_COLORS.PNG)
+![Examples](https://github.com/israpps/DiagBox/blob/main/gitimages/CMD_COLORS.PNG)
 
 
 
