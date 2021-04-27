@@ -9,11 +9,14 @@
 	*/
 #ifdef ISRA_WINDOWS
 	#include <windows.h>
-	#define COLOR_INT(args) SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),args);
-	#define COLOR(args) SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),stoi(#args,0,16));
+	#include <string>
+	#define COLOR_INT(args) SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),args); //pass an integer between 0 to 255
+	#define COLOR(args) SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),stoi(#args,0,16)); //pass a hex value between 00 and ff
+	#define COLOR_STRING(args) SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),stoi(args,0,16)); //pass a hex value (in form of std::string) between 00 and ff
 #else
 	#define COLOR_INT(args) std::cout <<"";
 	#define COLOR(args) std::cout <<"";
+	#define COLOR_STRING(args) std::cout <<"";
 #endif //ISRA_WINDOWS
 
 #endif //DIAGBOX
