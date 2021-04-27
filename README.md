@@ -32,13 +32,7 @@ D|purple (bright)
 E|yellow (bright)
 F|white (bright)
 
-
-
-example:
-```cmd    
-DiagBox.EXE gd 0c
-```
-will cause a black background with red text
+![Examples](https://github.com/israpps/DiagBox/tree/main/gitimages/CMD_COLORS.PNG)
 
 
 
