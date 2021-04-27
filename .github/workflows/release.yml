@@ -1,0 +1,45 @@
+name: Release Diagbox
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'bin/Release/*.*'
+      - '.github/workflows/*.yml'
+
+  #schedule:
+  # - cron: "0 15 * * *"
+jobs:
+  Repack_and_Release:
+    runs-on: ubuntu-latest
+    steps:
+
+    - name: checkout code for release
+      uses: actions/checkout@v1
+
+    - name: Zip Folder
+      run: |
+        SCH=${GITHUB_SHA::7}
+        cd bin
+        cd Release
+        echo commit $SCH>commit.sys
+        echo `date`>>commit.sys
+        cd ..
+        DATEE=`date '+[%Y-%m-%d]'`
+        mv Release DiagBox$DATEE
+        zip -r DiagBox\[$SCH\] DiagBox*/*
+        ls -R
+    - name: Upload artifacts
+      if: ${{ success() }}
+      uses: actions/upload-artifact@v2
+      with:
+        name: HDL-INST
+        path: |
+             bin/*.zip
+    - name: Create release
+      uses: marvinpinto/action-automatic-releases@latest
+      with:
+        repo_token: "${{ secrets.GITHUB_TOKEN }}"
+        automatic_release_tag: "experimental"
+        title: "Latest Experimental Repack"
+        files: |
+                bin/*.zip
