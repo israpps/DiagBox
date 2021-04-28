@@ -39,14 +39,7 @@ F|white (bright)
 --- 
 
 in adition:
-with diagbox you can use color combinations that the color command did not allow (matching bg & fg fro example)
-
-for example:
-
-`color 00` will fail
-
-while `diagbox.exe gd 00` will work
-
+with diagbox you can use the same foreground and background (`color` didn't allow this)
 # lib
 
 if you want to use this inside your program simply #include "[__diagbox.h__](https://github.com/israpps/DiagBox/blob/main/diagbox.h)" on your program and use one of the macros declared inside
