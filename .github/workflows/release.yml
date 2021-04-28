@@ -32,7 +32,7 @@ jobs:
       if: ${{ success() }}
       uses: actions/upload-artifact@v2
       with:
-        name: DiagBox-${{GITHUB_SHA::7}}
+        name: DiagBox
         path: |
              bin/*.zip
     - name: Create release
