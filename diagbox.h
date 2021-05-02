@@ -1,13 +1,13 @@
 #ifndef DIAGBOX
 #define DIAGBOX
 
-#define ISRA_WINDOWS
-/**comment the line "#define ISRA_WINDOWS" to disable the color macros
+#define ENABLE_COLORS
+/**comment the line "#define ENABLE_COLORS" to disable the color macros
 	* this was done in case you want to add portability to your program, saving you the task of removing the COLOR() macro everywhere
 	*
 	*
 	*/
-#ifdef ISRA_WINDOWS
+#ifdef ENABLE_COLORS
 	#include <windows.h>
 	#include <string>
 	#define COLOR_INT(args) SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),args); //pass an integer between 0 to 255
@@ -17,6 +17,6 @@
 	#define COLOR_INT(args) std::cout <<"";
 	#define COLOR(args) std::cout <<"";
 	#define COLOR_STRING(args) std::cout <<"";
-#endif //ISRA_WINDOWS
+#endif //ENABLE_COLORS
 
 #endif //DIAGBOX
