@@ -3,6 +3,9 @@
 the purpose of this app is to change the text color in the windows command prompt partially (instead of changing all the text color like the command "color" does)
 this can only be done by the CMD.EXE on it's own in windows 10 (its horrible since it makes the .BAT harder to read) 
 
+Useful tip:
+> Add a color macro at the beginning of the program to enforce a specific text color (in case the user changes the default color on program properties)
+
 ## USAGE
 
 ```bash
