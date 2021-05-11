@@ -14,5 +14,5 @@ jobs:
         - name: Compile windows version with cross-compilator
           run: |
              make release
-             dir
+             ls
              
