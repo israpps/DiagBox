@@ -1,6 +1,5 @@
-*.cbp
-*.depend
-*.layout
+
+
 obj/**/*.o
 obj/**/*.res
 
