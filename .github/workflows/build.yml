@@ -1,0 +1,19 @@
+name: Diagbox (build)
+on:
+  workflow_dispatch:
+  push:
+
+ jobs:
+  build:
+    runs-on: ubuntu-latest
+    container: dockcross/windows-static-x64:latest
+    
+    steps:       
+        - uses: actions/checkout@v2
+    
+        - name: Compile windows version with cross-compilator
+           run: |
+             Makefile.BAT
+             Make
+             dir
+             
