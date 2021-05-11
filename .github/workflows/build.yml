@@ -13,7 +13,6 @@ jobs:
     
         - name: Compile windows version with cross-compilator
           run: |
-             Makefile.BAT
              Make
              dir
              
