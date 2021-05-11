@@ -13,6 +13,6 @@ jobs:
     
         - name: Compile windows version with cross-compilator
           run: |
-             Make
+             make
              dir
              
