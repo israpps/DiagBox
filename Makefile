@@ -3,13 +3,13 @@
 #------------------------------------------------------------------------------#
 
 
-WORKDIR = `pwd`
+WORKDIR = %cd%
 
-CC = gcc
-CXX = g++
-AR = ar
-LD = g++
-WINDRES = 
+CC = gcc.exe
+CXX = g++.exe
+AR = ar.exe
+LD = g++.exe
+WINDRES = windres.exe
 
 INC = 
 CFLAGS = -Wall -fexceptions
@@ -18,39 +18,39 @@ LIBDIR =
 LIB = 
 LDFLAGS = -static-libstdc++ -static-libgcc -static
 
-INC_DEBUG = $(INC) -IClasses/DiagBox
+INC_DEBUG = $(INC) -IClasses\DiagBox
 CFLAGS_DEBUG = $(CFLAGS) -m32 -g
 RESINC_DEBUG = $(RESINC)
 RCFLAGS_DEBUG = $(RCFLAGS)
 LIBDIR_DEBUG = $(LIBDIR)
 LIB_DEBUG = $(LIB) 
 LDFLAGS_DEBUG = $(LDFLAGS) -static-libstdc++ -static-libgcc -static -m32
-OBJDIR_DEBUG = obj/Debug
+OBJDIR_DEBUG = obj\\Debug
 DEP_DEBUG = 
-OUT_DEBUG = bin/Debug/DiagBox
+OUT_DEBUG = bin\\Debug\\DiagBox.exe
 
-INC_RELEASE = $(INC) -IClasses/DiagBox
+INC_RELEASE = $(INC) -IClasses\DiagBox
 CFLAGS_RELEASE = $(CFLAGS) -O2 -m64
 RESINC_RELEASE = $(RESINC)
 RCFLAGS_RELEASE = $(RCFLAGS)
 LIBDIR_RELEASE = $(LIBDIR)
 LIB_RELEASE = $(LIB) 
 LDFLAGS_RELEASE = $(LDFLAGS) -s -static-libstdc++ -static-libgcc -static -m64
-OBJDIR_RELEASE = obj/Release
+OBJDIR_RELEASE = obj\\Release
 DEP_RELEASE = 
-OUT_RELEASE = bin/Release/DiagBox
+OUT_RELEASE = bin\\Release\\DiagBox.exe
 
-OBJ_DEBUG = $(OBJDIR_DEBUG)/Package1.o $(OBJDIR_DEBUG)/main.o
+OBJ_DEBUG = $(OBJDIR_DEBUG)\\Package1.o $(OBJDIR_DEBUG)\\main.o
 
-OBJ_RELEASE = $(OBJDIR_RELEASE)/Package1.o $(OBJDIR_RELEASE)/main.o
+OBJ_RELEASE = $(OBJDIR_RELEASE)\\Package1.o $(OBJDIR_RELEASE)\\main.o
 
 all: debug release
 
 clean: clean_debug clean_release
 
 before_debug: 
-	test -d bin/Debug || mkdir -p bin/Debug
-	test -d $(OBJDIR_DEBUG) || mkdir -p $(OBJDIR_DEBUG)
+	cmd /c if not exist bin\\Debug md bin\\Debug
+	cmd /c if not exist $(OBJDIR_DEBUG) md $(OBJDIR_DEBUG)
 
 after_debug: 
 
@@ -59,20 +59,20 @@ debug: before_debug out_debug after_debug
 out_debug: before_debug $(OBJ_DEBUG) $(DEP_DEBUG)
 	$(LD) $(LIBDIR_DEBUG) -o $(OUT_DEBUG) $(OBJ_DEBUG)  $(LDFLAGS_DEBUG) $(LIB_DEBUG)
 
-$(OBJDIR_DEBUG)/Package1.o: Package1.rc
-	gcc -x c -c -o $(OBJDIR_DEBUG)/Package1.o /dev/null
+$(OBJDIR_DEBUG)\\Package1.o: Package1.rc
+	$(WINDRES) -i Package1.rc -J rc -o $(OBJDIR_DEBUG)\\Package1.o -O coff $(INC_DEBUG)
 
-$(OBJDIR_DEBUG)/main.o: main.cpp
-	$(CXX) $(CFLAGS_DEBUG) $(INC_DEBUG) -c main.cpp -o $(OBJDIR_DEBUG)/main.o
+$(OBJDIR_DEBUG)\\main.o: main.cpp
+	$(CXX) $(CFLAGS_DEBUG) $(INC_DEBUG) -c main.cpp -o $(OBJDIR_DEBUG)\\main.o
 
 clean_debug: 
-	rm -f $(OBJ_DEBUG) $(OUT_DEBUG)
-	rm -rf bin/Debug
-	rm -rf $(OBJDIR_DEBUG)
+	cmd /c del /f $(OBJ_DEBUG) $(OUT_DEBUG)
+	cmd /c rd bin\\Debug
+	cmd /c rd $(OBJDIR_DEBUG)
 
 before_release: 
-	test -d bin/Release || mkdir -p bin/Release
-	test -d $(OBJDIR_RELEASE) || mkdir -p $(OBJDIR_RELEASE)
+	cmd /c if not exist bin\\Release md bin\\Release
+	cmd /c if not exist $(OBJDIR_RELEASE) md $(OBJDIR_RELEASE)
 
 after_release: 
 
@@ -81,16 +81,16 @@ release: before_release out_release after_release
 out_release: before_release $(OBJ_RELEASE) $(DEP_RELEASE)
 	$(LD) $(LIBDIR_RELEASE) -o $(OUT_RELEASE) $(OBJ_RELEASE)  $(LDFLAGS_RELEASE) $(LIB_RELEASE)
 
-$(OBJDIR_RELEASE)/Package1.o: Package1.rc
-	gcc -x c -c -o $(OBJDIR_RELEASE)/Package1.o /dev/null
+$(OBJDIR_RELEASE)\\Package1.o: Package1.rc
+	$(WINDRES) -i Package1.rc -J rc -o $(OBJDIR_RELEASE)\\Package1.o -O coff $(INC_RELEASE)
 
-$(OBJDIR_RELEASE)/main.o: main.cpp
-	$(CXX) $(CFLAGS_RELEASE) $(INC_RELEASE) -c main.cpp -o $(OBJDIR_RELEASE)/main.o
+$(OBJDIR_RELEASE)\\main.o: main.cpp
+	$(CXX) $(CFLAGS_RELEASE) $(INC_RELEASE) -c main.cpp -o $(OBJDIR_RELEASE)\\main.o
 
 clean_release: 
-	rm -f $(OBJ_RELEASE) $(OUT_RELEASE)
-	rm -rf bin/Release
-	rm -rf $(OBJDIR_RELEASE)
+	cmd /c del /f $(OBJ_RELEASE) $(OUT_RELEASE)
+	cmd /c rd bin\\Release
+	cmd /c rd $(OBJDIR_RELEASE)
 
 .PHONY: before_debug after_debug clean_debug before_release after_release clean_release
 
