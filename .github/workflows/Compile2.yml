@@ -13,11 +13,11 @@ jobs:
         with:
           msystem: MINGW64
           update: true
-          install: git mingw-w64-x86_64-toolchain
-      - name: get git
-        #shell: msys {0}
-        run: |
-          apk add build-base git zip make
+          install: git mingw-w64-x86_64-toolchain make
+      #- name: get git
+      #  #shell: msys {0}
+      #  run: |
+      #    apk add build-base git zip make
       - name: CI-Build
         #shell: msys2 {0}
         run: |
