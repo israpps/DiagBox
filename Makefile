@@ -59,8 +59,8 @@ debug: before_debug out_debug after_debug
 out_debug: before_debug $(OBJ_DEBUG) $(DEP_DEBUG)
 	$(LD) $(LIBDIR_DEBUG) -o $(OUT_DEBUG) $(OBJ_DEBUG)  $(LDFLAGS_DEBUG) $(LIB_DEBUG)
 
-$(OBJDIR_DEBUG)\\Package1.o: Package1.rc
-	$(WINDRES) -i Package1.rc -J rc -o $(OBJDIR_DEBUG)\\Package1.o -O coff $(INC_DEBUG)
+$(OBJDIR_DEBUG)\\Package1.res: Package1.rc
+	$(WINDRES) -i Package1.rc -J rc -o $(OBJDIR_DEBUG)\\Package1.res -O coff $(INC_DEBUG)
 
 $(OBJDIR_DEBUG)\\main.o: main.cpp
 	$(CXX) $(CFLAGS_DEBUG) $(INC_DEBUG) -c main.cpp -o $(OBJDIR_DEBUG)\\main.o
@@ -81,8 +81,8 @@ release: before_release out_release after_release
 out_release: before_release $(OBJ_RELEASE) $(DEP_RELEASE)
 	$(LD) $(LIBDIR_RELEASE) -o $(OUT_RELEASE) $(OBJ_RELEASE)  $(LDFLAGS_RELEASE) $(LIB_RELEASE)
 
-$(OBJDIR_RELEASE)\\Package1.o: Package1.rc
-	$(WINDRES) -i Package1.rc -J rc -o $(OBJDIR_RELEASE)\\Package1.o -O coff $(INC_RELEASE)
+$(OBJDIR_RELEASE)\\Package1.res: Package1.rc
+	$(WINDRES) -i Package1.rc -J rc -o $(OBJDIR_RELEASE)\\Package1.res -O coff $(INC_RELEASE)
 
 $(OBJDIR_RELEASE)\\main.o: main.cpp
 	$(CXX) $(CFLAGS_RELEASE) $(INC_RELEASE) -c main.cpp -o $(OBJDIR_RELEASE)\\main.o
