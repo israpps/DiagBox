@@ -22,12 +22,12 @@ jobs:
         #shell: msys2 {0}
         run: |
           echo 'Running in MSYS2!'
-          tree /F
+          ls -r
           make
-          tree/F
-      - name: CI-Build
+          ls -r
+      - name: ls
         #shell: msys2 {0}
         run: |
-           tree /F
+         ls -r  
           
           
