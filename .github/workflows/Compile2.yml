@@ -15,10 +15,11 @@ jobs:
           update: true
           install: git mingw-w64-x86_64-toolchain
       - name: get git
-        shell: msys {0}
-        run: apt get git make
+        #shell: msys {0}
+        run: |
+          apt get git make
       - name: CI-Build
-        shell: msys2 {0}
+        #shell: msys2 {0}
         run: |
           echo 'Running in MSYS2!'
           make
