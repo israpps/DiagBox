@@ -23,4 +23,5 @@ jobs:
         run: |
           echo 'Running in MSYS2!'
           make
+          ls -r
           
