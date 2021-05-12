@@ -40,9 +40,9 @@ OBJDIR_RELEASE = obj\\Release
 DEP_RELEASE = 
 OUT_RELEASE = bin\\Release\\DiagBox.exe
 
-OBJ_DEBUG = $(OBJDIR_DEBUG)\\Package1.o $(OBJDIR_DEBUG)\\main.o
+OBJ_DEBUG = $(OBJDIR_DEBUG)\\Package1.Res $(OBJDIR_DEBUG)\\main.o
 
-OBJ_RELEASE = $(OBJDIR_RELEASE)\\Package1.o $(OBJDIR_RELEASE)\\main.o
+OBJ_RELEASE = $(OBJDIR_RELEASE)\\Package1.res $(OBJDIR_RELEASE)\\main.o
 
 all: debug release
 
