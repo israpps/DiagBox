@@ -19,8 +19,5 @@ jobs:
         - name: Compile windows version with cross-compilator
           run: |
              make
-             dir
-             cd bin
-             cd release
-             dir
+             tree /F
              
