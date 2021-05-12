@@ -20,4 +20,7 @@ jobs:
           run: |
              make
              dir
+             cd bin
+             cd release
+             dir
              
