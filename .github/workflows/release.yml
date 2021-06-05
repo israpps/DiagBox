@@ -30,7 +30,7 @@ jobs:
         cd ..
         DATEE=`date '+[%Y-%m-%d]'`
         mv $BLD DiagBox$DATEE-\[$BLD\]
-        zip -r DiagBox\[$SCH\] DiagBox*/*
+        zip -r DiagBox\[$SCH\]-$BLD DiagBox*/*
         ls -R
     - name: Upload artifacts
       if: ${{ success() }}
