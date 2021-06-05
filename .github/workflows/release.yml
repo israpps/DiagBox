@@ -45,7 +45,7 @@ jobs:
       with:
         repo_token: "${{ secrets.GITHUB_TOKEN }}"
         automatic_release_tag: ${{matrix.build_target}}
-        prerelease: false
+        prerelease: true
         title: ${{matrix.build_target}}
         files: |
                 bin/*.zip
