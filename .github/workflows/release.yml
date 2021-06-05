@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
   push:
     paths:
-      - 'bin/Release/*.*'
+      - 'bin/*bits/*.*'
       - '.github/workflows/*.yml'
 
   #schedule:
