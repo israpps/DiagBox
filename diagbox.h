@@ -1,3 +1,10 @@
+/***************************************************************
+ * Name:      diagbox.h
+ * Purpose:   macro definition to make windows api color change usage easier
+ * Author:    matias israelson (aka: El_isra) (tatochin-m@hotmail.com)
+ * Copyright: matias israelson (aka: El_isra) (https://github.com/israpps)
+ * License:   GPL-3.0
+ **************************************************************/
 #ifndef DIAGBOX
 #define DIAGBOX
 

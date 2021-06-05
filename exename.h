@@ -1,3 +1,11 @@
+/***************************************************************
+ * Name:      exename.h
+ * Purpose:   to keep a stupid function on another header, allowing faster re-use for my programs
+ * Author:    matias israelson (aka: El_isra) (tatochin-m@hotmail.com)
+ * Copyright: matias israelson (aka: El_isra) (https://github.com/israpps)
+ * License:   GPL-3.0
+ **************************************************************/
+
 #ifndef _H_EXENAME_H_
 #define _H_EXENAME_H_
   #include <string>
