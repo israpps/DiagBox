@@ -1,1 +1,0 @@
-cbp2make.exe -in DiagBox.cbp  -out Makefile

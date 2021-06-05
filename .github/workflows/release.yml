@@ -10,6 +10,9 @@ on:
   # - cron: "0 15 * * *"
 jobs:
   Repack_and_Release:
+  strategy:
+    matrix:
+      build_target: [64 bits,32 bits]
     runs-on: ubuntu-latest
     steps:
 
@@ -19,13 +22,14 @@ jobs:
     - name: Zip Folder
       run: |
         SCH=${GITHUB_SHA::7}
+        BLD=${{ matrix.build_target }}
         cd bin
-        cd Release
+        cd $BLD
         echo commit $SCH>commit.sys
         echo `date`>>commit.sys
         cd ..
         DATEE=`date '+[%Y-%m-%d]'`
-        mv Release DiagBox$DATEE
+        mv Release DiagBox$DATEE-\[$BLD\]
         zip -r DiagBox\[$SCH\] DiagBox*/*
         ls -R
     - name: Upload artifacts
@@ -35,12 +39,13 @@ jobs:
         name: DiagBox
         path: |
              bin/*.zip
+             
     - name: Create release
       uses: marvinpinto/action-automatic-releases@latest
       with:
         repo_token: "${{ secrets.GITHUB_TOKEN }}"
-        automatic_release_tag: "Latest"
+        automatic_release_tag: ${{matrix.build_target}}
         prerelease: false
-        title: "Latest Release"
+        title: ${{matrix.build_target}}
         files: |
                 bin/*.zip
