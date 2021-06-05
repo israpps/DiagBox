@@ -12,7 +12,7 @@ jobs:
   Repack_and_Release:
    strategy:
     matrix:
-      build_target: [64 bits,32 bits]
+      build_target: [64-bits,32-bits]
    runs-on: ubuntu-latest
    steps:
 
