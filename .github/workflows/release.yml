@@ -22,7 +22,7 @@ jobs:
     - name: Zip Folder
       run: |
         SCH=${GITHUB_SHA::7}
-        BLD=${{ matrix.build_target }}
+        BLD="${{ matrix.build_target }}"
         cd bin
         cd $BLD
         echo commit $SCH>commit.sys
