@@ -10,11 +10,11 @@ on:
   # - cron: "0 15 * * *"
 jobs:
   Repack_and_Release:
-  strategy:
+   strategy:
     matrix:
       build_target: [64 bits,32 bits]
-    runs-on: ubuntu-latest
-    steps:
+   runs-on: ubuntu-latest
+   steps:
 
     - name: checkout code for release
       uses: actions/checkout@v1
