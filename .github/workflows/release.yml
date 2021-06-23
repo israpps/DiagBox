@@ -30,7 +30,7 @@ jobs:
         cd ..
         DATEE=`date '+[%Y-%m-%d]'`
         mv $BLD DiagBox$DATEE-\[$BLD\]
-        zip -r DiagBox\[$SCH\]-$BLD DiagBox*/*
+        7z a -t7z -r  DiagBox\[$SCH\]-$BLD.7z DiagBox*/*
         ls -R
     - name: Upload artifacts
       if: ${{ success() }}
@@ -38,7 +38,7 @@ jobs:
       with:
         name: DiagBox
         path: |
-             bin/*.zip
+             bin/*.7z
              
     - name: Create release
       uses: marvinpinto/action-automatic-releases@latest
@@ -48,4 +48,4 @@ jobs:
         prerelease: true
         title: ${{matrix.build_target}}
         files: |
-                bin/*.zip
+                bin/*.7z
