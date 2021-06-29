@@ -32,6 +32,7 @@ jobs:
         mv $BLD DiagBox$DATEE-\[$BLD\]
         7z a -t7z -r  DiagBox\[$SCH\]-$BLD.7z DiagBox*/*
         ls -R
+        echo GITHUB_EVENT_NAME was ${{ GITHUB_EVENT_NAME }}
     - name: Upload artifacts
       if: ${{ success() }}
       uses: actions/upload-artifact@v2
