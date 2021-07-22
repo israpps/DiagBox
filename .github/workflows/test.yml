@@ -6,7 +6,7 @@ on:
       - 'bin/*bits/*.*'
       - '.github/workflows/*.yml'
   repository_dispatch:
-    types: [TEST]
+    types: [Component_update]
   #schedule:
   # - cron: "0 15 * * *"
 jobs:
