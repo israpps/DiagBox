@@ -49,7 +49,6 @@ int stoi_with_hex(string original)
     cout << "$TEST " << DOU <<endl;
 #endif
     return DOU;
-
 }
 //---------------------------
 void show_colors ()
