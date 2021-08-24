@@ -8,8 +8,7 @@
 
 #ifndef _H_EXENAME_H_
 #define _H_EXENAME_H_
-  #include <string>
-
+#include <string>
   std::string EXE_NAME (char* _argv0)
   {
   std::string temporary = _argv0;
