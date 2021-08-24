@@ -6,8 +6,6 @@ on:
       - 'bin/*bits/*.*'
       - '.github/workflows/*.yml'
 
-  #schedule:
-  # - cron: "0 15 * * *"
 jobs:
   Repack_and_Release:
    strategy:
@@ -32,6 +30,7 @@ jobs:
         mv $BLD DiagBox$DATEE-\[$BLD\]
         7z a -t7z -r  DiagBox\[$SCH\]-$BLD.7z DiagBox*/*
         ls -R
+
     - name: Upload artifacts
       if: ${{ success() }}
       uses: actions/upload-artifact@v2
@@ -39,7 +38,7 @@ jobs:
         name: DiagBox
         path: |
              bin/*.7z
-             
+
     - name: Create release
       uses: marvinpinto/action-automatic-releases@latest
       with:
