@@ -1,50 +1,29 @@
-name: Release Diagbox
-on:
-  workflow_dispatch:
+name: ubuntu-codeblocks
+
+on: 
   push:
-    paths:
-      - 'bin/*bits/*.*'
-      - '.github/workflows/*.yml'
 
 jobs:
-  Repack_and_Release:
-   strategy:
-    matrix:
-      build_target: [64-bits,32-bits]
-   runs-on: ubuntu-latest
-   steps:
+  linux:
+    runs-on: ubuntu-latest
 
-    - name: checkout code for release
-      uses: actions/checkout@v1
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
 
-    - name: Zip Folder
+    - name: apt-get update
+      run: sudo apt-get update -y
+
+    - name: apt-get install -y codeblocks
+      run: sudo apt-get install -y codeblocks
+
+    - name: codeblocks's default configuration
       run: |
-        SCH=${GITHUB_SHA::7}
-        BLD="${{ matrix.build_target }}"
-        cd bin
-        cd $BLD
-        echo commit $SCH>commit.sys
-        echo `date`>>commit.sys
-        cd ..
-        DATEE=`date '+[%Y-%m-%d]'`
-        mv $BLD DiagBox$DATEE-\[$BLD\]
-        7z a -t7z -r  DiagBox\[$SCH\]-$BLD.7z DiagBox*/*
-        ls -R
+        mkdir -p ~/.config/codeblocks
+        cp codeblocks/default.conf ~/.config/codeblocks/
 
-    - name: Upload artifacts
-      if: ${{ success() }}
-      uses: actions/upload-artifact@v2
+    - name: build projects
+      uses: GabrielBB/xvfb-action@v1 # fake X-server as codeblocks requires displays :/
       with:
-        name: DiagBox
-        path: |
-             bin/*.7z
-
-    - name: Create release
-      uses: marvinpinto/action-automatic-releases@latest
-      with:
-        repo_token: "${{ secrets.GITHUB_TOKEN }}"
-        automatic_release_tag: ${{matrix.build_target}}
-        prerelease: true
-        title: ${{matrix.build_target}}
-        files: |
-                bin/*.7z
+        run: codeblocks --no-splash-screen --target=Release --build DiagBox.cbp
+ 
