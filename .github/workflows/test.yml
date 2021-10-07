@@ -1,0 +1,19 @@
+name: GITHUB_EVENT_NAME
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'bin/*bits/*.*'
+      - '.github/workflows/*.yml'
+  repository_dispatch:
+    types: [Component_update]
+  #schedule:
+  # - cron: "0 15 * * *"
+jobs:
+  Repack_and_Release:
+      runs-on: ubuntu-latest
+      steps:
+      - name: Zip Folder
+        run: |
+          echo ${{github.event_name}}
+          ls -R

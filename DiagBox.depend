@@ -1,0 +1,36 @@
+# depslib dependency file v1.0
+1622902932 source:d:\npp_proj\dea\diagbox\main.cpp
+	"main.h"
+
+1616817878 source:d:\npp_proj\dea\diagbox\package1.rc
+	"version.dummy"
+
+1608514075 source:d:\npp_proj\dea\diagbox\classes\diagbox\diagbox.cpp
+	"DiagBox.h"
+
+1609805562 d:\npp_proj\dea\diagbox\classes\diagbox\diagbox.h
+	<string>
+	<windows.h>
+
+1622903083 d:\npp_proj\dea\diagbox\main.h
+	<iostream>
+	<windows.h>
+	<string>
+	<string.h>
+	<iomanip>
+	"diagbox.h"
+	"version.h"
+	"exename.h"
+
+1622903083 d:\npp_proj\dea\diagbox\version.h
+
+1619534147 d:\npp_proj\dea\diagbox\exename.h
+	<string>
+
+1616817817 d:\npp_proj\dea\diagbox\version.dummy
+	"version.h"
+
+1622901655 d:\npp_proj\dea\diagbox\diagbox.h
+	<windows.h>
+	<string>
+

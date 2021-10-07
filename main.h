@@ -1,3 +1,12 @@
+/***************************************************************
+ * Name:      main.h
+ * Purpose:   header inclusion & function declaration
+ * Author:    matias israelson (aka: El_isra) (tatochin-m@hotmail.com)
+ * Copyright: matias israelson (aka: El_isra) (https://github.com/israpps)
+ * License:   GPL-3.0
+ **************************************************************/
+
+
 #ifndef _H_MAIN_H_
 #define _H_MAIN_H_
 ///<>
@@ -16,6 +25,11 @@
 ///namespace
 using namespace std;
 
+#ifdef BITS32
+#define BITS " '32 bits' "
+#else
+#define BITS " '64 bits'"
+#endif // BIT32
 
 ///Variables
 string exename;
@@ -32,10 +46,9 @@ int stoi_with_hex(string original)
 {
     int DOU = stoi(original,0,16);
 #ifdef $TEST
-    cout << "$TEST" << DOU <<endl;
+    cout << "$TEST " << DOU <<endl;
 #endif
     return DOU;
-
 }
 //---------------------------
 void show_colors ()
@@ -51,10 +64,11 @@ void show_colors ()
             if (x <= 15) //on the first row...
             {
                 cout << setw(2);
-             cout << 0; //...Prepend a '0' (black background)
+                cout << 0; //...Prepend a '0' (black background)
             }
             else
             cout << setw(3);
+
         cout << std::hex  << x ;
         x++;
         if ( (x % 16) ==0 )//split based on background color
@@ -71,7 +85,7 @@ void print_help(void)
 {
     COLOR_INT(15);
     cout << "===================================================="<< endl;
-    cout << "Diagbox version [" << AutoVersion::FULLVERSION_STRING << "]-[" << AutoVersion::STATUS << "]"<<endl;
+    cout << "Diagbox version [" << AutoVersion::FULLVERSION_STRING << "]-[" << AutoVersion::STATUS << "]"<< BITS << endl;
     cout << "build:" << AutoVersion::YEAR <<"-"<< AutoVersion::MONTH <<"-"<< AutoVersion::DATE<<endl;
     cout << "Made by Matias israelson (Aka: El_isra)"<<endl;
     cout << "https://github.com/israpps/DiagBox\n";
@@ -89,7 +103,7 @@ void print_help(void)
     COLOR_INT(12);
     cout << " $COLOR_CODE"<<endl;
     COLOR_INT(7);
-    cin.ignore();
+    //cin.ignore();
 }
 
 #endif //_H_MAIN_H_

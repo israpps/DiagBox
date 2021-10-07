@@ -3,15 +3,16 @@ on:
   workflow_dispatch:
   push:
     paths:
-      - 'bin/Release/*.*'
+      - 'bin/*bits/*.*'
       - '.github/workflows/*.yml'
 
-  #schedule:
-  # - cron: "0 15 * * *"
 jobs:
   Repack_and_Release:
-    runs-on: ubuntu-latest
-    steps:
+   strategy:
+    matrix:
+      build_target: [64-bits,32-bits]
+   runs-on: ubuntu-latest
+   steps:
 
     - name: checkout code for release
       uses: actions/checkout@v1
@@ -19,28 +20,31 @@ jobs:
     - name: Zip Folder
       run: |
         SCH=${GITHUB_SHA::7}
+        BLD="${{ matrix.build_target }}"
         cd bin
-        cd Release
+        cd $BLD
         echo commit $SCH>commit.sys
         echo `date`>>commit.sys
         cd ..
         DATEE=`date '+[%Y-%m-%d]'`
-        mv Release DiagBox$DATEE
-        zip -r DiagBox\[$SCH\] DiagBox*/*
+        mv $BLD DiagBox$DATEE-\[$BLD\]
+        7z a -t7z -r  DiagBox\[$SCH\]-$BLD.7z DiagBox*/*
         ls -R
+
     - name: Upload artifacts
       if: ${{ success() }}
       uses: actions/upload-artifact@v2
       with:
         name: DiagBox
         path: |
-             bin/*.zip
+             bin/*.7z
+
     - name: Create release
       uses: marvinpinto/action-automatic-releases@latest
       with:
         repo_token: "${{ secrets.GITHUB_TOKEN }}"
-        automatic_release_tag: "Latest"
-        prerelease: false
-        title: "Latest Release"
+        automatic_release_tag: ${{matrix.build_target}}
+        prerelease: true
+        title: ${{matrix.build_target}}
         files: |
-                bin/*.zip
+                bin/*.7z
