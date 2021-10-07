@@ -21,9 +21,14 @@ jobs:
       run: |
         mkdir -p ~/.config/codeblocks
         cp codeblocks/default.conf ~/.config/codeblocks/
-
+        
     - name: build projects
       uses: GabrielBB/xvfb-action@v1 # fake X-server as codeblocks requires displays :/
       with:
         run: codeblocks --no-splash-screen --target=Release --rebuild DiagBox.cbp
+        
+    - name: list
+      run: |
+          cd bin
+          ls -r
  
