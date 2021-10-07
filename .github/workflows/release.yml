@@ -25,5 +25,5 @@ jobs:
     - name: build projects
       uses: GabrielBB/xvfb-action@v1 # fake X-server as codeblocks requires displays :/
       with:
-        run: codeblocks --no-splash-screen --target=Release --build DiagBox.cbp
+        run: codeblocks --no-splash-screen --target=Release --rebuild DiagBox.cbp
  
