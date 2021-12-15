@@ -11,7 +11,7 @@ on:
       - '**CMakeLists.txt'
 
 jobs:
-  Repack_and_Release:
+  Build_and_Repack:
    strategy:
     matrix:
       DOCKER: ["dockcross/windows-static-x86:latest","dockcross/windows-static-x64:latest"]
@@ -55,6 +55,7 @@ jobs:
              bin/*.7z
 
   Release:
+   needs: Build_and_Repack
    runs-on: ubuntu-latest
    steps:
 
