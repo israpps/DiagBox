@@ -35,6 +35,7 @@ D|purple (bright)
 E|yellow (bright)
 F|white (bright)
 
+> If the table was not enough, see all the combinations in action!
 ![Examples](https://github.com/israpps/DiagBox/blob/main/gitimages/CMD_COLORS.PNG)
 
 
