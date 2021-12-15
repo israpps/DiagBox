@@ -62,6 +62,11 @@ jobs:
    runs-on: ubuntu-latest
    steps:
 
+    - name: Download 1.965 artifact
+        uses: actions/download-artifact@v1
+        with:
+          name: DiagBox
+
     - name: Create release
       uses: marvinpinto/action-automatic-releases@latest
       with:
@@ -70,4 +75,4 @@ jobs:
         prerelease: true
         title: latest build
         files: |
-                bin/*.7z
+                DiagBox/*.7z
