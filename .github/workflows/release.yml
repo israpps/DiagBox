@@ -26,6 +26,7 @@ jobs:
       run: |
         DPA="${{matrix.DOCKER}}"
         BLD=$( echo $DPA|cut -c 26-28 )
+        echo $BLD>TMP TXT
         mkdir build
         cd build
         cmake ..
