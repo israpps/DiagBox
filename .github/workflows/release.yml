@@ -35,14 +35,14 @@ jobs:
 
     - name: Zip Folder
       run: |
-        SCH=${GITHUB_SHA::7}
+        #SCH=${GITHUB_SHA::7}
         DPA="${{matrix.DOCKER}}"
         BLD=$( echo $DPA|cut -c 26-28 )
         echo $BLD
         cd bin
         cd $BLD
-        echo commit $SCH>commit.txt
-        echo `date`>>commit.txt
+        #echo commit $SCH>commit.txt
+        #echo `date`>>commit.txt
         cd ..
         DATEE=`date '+[%Y-%m-%d]'`
         mv $BLD DiagBox$DATEE-\[$BLD\]
