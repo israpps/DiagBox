@@ -24,7 +24,7 @@ jobs:
 
     - name: build
       run: |
-        echo ${{matrix.container}} |grep x[86][64] >TMP.TXT
+        echo ${{matrix.DOCKER}} |grep x[86][64] >TMP.TXT
         BLD=$(cat TMP.TXT)
         mkdir build
         cd build
