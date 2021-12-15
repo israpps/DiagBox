@@ -63,9 +63,9 @@ jobs:
    steps:
 
     - name: Download 1.965 artifact
-        uses: actions/download-artifact@v1
-        with:
-          name: DiagBox
+      uses: actions/download-artifact@v1
+      with:
+        name: DiagBox
 
     - name: Create release
       uses: marvinpinto/action-automatic-releases@latest
