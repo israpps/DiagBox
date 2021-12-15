@@ -5,26 +5,41 @@ on:
     paths:
       - 'bin/*bits/*.*'
       - '.github/workflows/*.yml'
+      - '**.cpp'
+      - '**.rc'
+      - '**.h'
+      - '**CMakeLists.txt'
 
 jobs:
   Repack_and_Release:
    strategy:
     matrix:
-      build_target: [64-bits,32-bits]
+      DOCKER: ["dockcross/windows-static-x86:latest","dockcross/windows-static-x64:latest"]
    runs-on: ubuntu-latest
+   container: ${{ matrix.DOCKER}}
    steps:
 
     - name: checkout code for release
-      uses: actions/checkout@v1
+      uses: actions/checkout@v2
+
+    - name: build
+      run: |
+        echo ${{matrix.container}} |grep x[86][64] >TMP.TXT
+        BLD=$(cat TMP.TXT)
+        mkdir build
+        cd build
+        cmake ..
+        make clean all
+        cp DiagBox.exe ../bin/$BLD/DiagBox.exe
 
     - name: Zip Folder
       run: |
         SCH=${GITHUB_SHA::7}
-        BLD="${{ matrix.build_target }}"
+        BLD=$(cat TMP.TXT)
         cd bin
         cd $BLD
-        echo commit $SCH>commit.sys
-        echo `date`>>commit.sys
+        echo commit $SCH>commit.txt
+        echo `date`>>commit.txt
         cd ..
         DATEE=`date '+[%Y-%m-%d]'`
         mv $BLD DiagBox$DATEE-\[$BLD\]
@@ -39,12 +54,16 @@ jobs:
         path: |
              bin/*.7z
 
+  Release:
+   runs-on: ubuntu-latest
+   steps:
+
     - name: Create release
       uses: marvinpinto/action-automatic-releases@latest
       with:
         repo_token: "${{ secrets.GITHUB_TOKEN }}"
-        automatic_release_tag: ${{matrix.build_target}}
+        automatic_release_tag: Latest
         prerelease: true
-        title: ${{matrix.build_target}}
+        title: latest build
         files: |
                 bin/*.7z
