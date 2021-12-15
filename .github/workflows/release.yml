@@ -25,7 +25,7 @@ jobs:
     - name: build
       run: |
         DPA="${{matrix.DOCKER}}"
-        BLD=$( echo $DPA|cut -c 25,3 )
+        BLD=$( echo $DPA|cut -c 25-28 )
         mkdir build
         cd build
         cmake ..
