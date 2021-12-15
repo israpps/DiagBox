@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
   push:
     paths:
-      - 'bin/*bits/*.*'
+      - 'bin/x*/*.*'
       - '.github/workflows/*.yml'
       - '**.cpp'
       - '**.rc'
