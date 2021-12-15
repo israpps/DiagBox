@@ -24,8 +24,8 @@ jobs:
 
     - name: build
       run: |
-        echo "${{matrix.DOCKER}}" | grep  "x[0-9][0-9]" >TMP.TXT
-        BLD=$(cat TMP.TXT)
+        DPA="${{matrix.DOCKER}}"
+        BLD=${$DPA:25:3}
         mkdir build
         cd build
         cmake ..
@@ -36,6 +36,7 @@ jobs:
       run: |
         SCH=${GITHUB_SHA::7}
         BLD=$(cat TMP.TXT)
+        echo $BLD
         cd bin
         cd $BLD
         echo commit $SCH>commit.txt
