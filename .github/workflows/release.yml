@@ -36,7 +36,8 @@ jobs:
     - name: Zip Folder
       run: |
         SCH=${GITHUB_SHA::7}
-        BLD=$(cat TMP.TXT)
+        DPA="${{matrix.DOCKER}}"
+        BLD=$( echo $DPA|cut -c 26-28 )
         echo $BLD
         cd bin
         cd $BLD
