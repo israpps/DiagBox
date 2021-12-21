@@ -36,6 +36,7 @@ string exename;
 
 ///Commands
 #define CMD_GD "gd" ///global directive (change text color till used again)
+#define CMD_PRINTF "pf" ///printf mode, inspired on C printf();
 #define CMD_COLORS "colors" ///shows all 255 colors
 #define CMD_HELP "help" ///quite self explanatory
 
@@ -103,6 +104,17 @@ void print_help(void)
     COLOR_INT(12);
     cout << " $COLOR_CODE"<<endl;
     COLOR_INT(7);
+    cout << "to use different colors on the same line:\n"
+         << exename <<" pf ";
+         COLOR(0c);
+         cout <<"COLOR_CODE";
+         COLOR(07);
+         cout <<"Text\n...\n\nExample:\n\t"<<exename<<" pf 0cwarning!! \"0e  It seems that diagbox got updated after so long...\" \"0a and it seems that we can print text with different colors on the same line!\"";
+         cout <<"\nwill yield this text:\n"; COLOR(0c);
+         cout <<"\twarning!! "; COLOR(0e)
+         cout <<"It seems that diagbox got updated after so long..."; COLOR(0a);
+         cout <<" and it seems that we can print text with different colors on the same line!\n"; COLOR(07);
+         cout <<"\n\n\t every argument will be written on the same line, taking the first two chars as color code\n";
     //cin.ignore();
 }
 

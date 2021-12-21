@@ -21,11 +21,21 @@ int main(int argc, char* argv[])
             {argvS[x] = argv[x];}
 
 
-        if ( (argc <=2) && (strcmp(argv[1],CMD_GD) == 0))
+        if ( (argc <=2) && ((strcmp(argv[1],CMD_GD) == 0) || (strcmp(argv[1],CMD_PRINTF)==0) ))
                 cout << "missing argument...\nenter the comand: \"" << exename << " help\" to learn how to use this program\n";
 
         if ( (argc >= 3) && (strcmp(argv[1],CMD_GD) == 0))
                 COLOR_STRING(argvS[2]);
+        if ( (argc >= 3) && (strcmp(argv[1],CMD_PRINTF) == 0))
+        {
+                for (int x=2;x<argc;x++)
+                {
+                    COLOR_STRING(argvS[x].substr(0,2));
+                    std::cout << argvS[x].substr(2);
+                    COLOR(07);
+                }
+        std::cout<<std::endl;
+        }
 
 
         if(strcmp(argv[1],CMD_COLORS)==0)

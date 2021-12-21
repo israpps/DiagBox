@@ -34,3 +34,31 @@
 	<windows.h>
 	<string>
 
+1640050641 source:c:\users\usuario\documents\github\diagbox\package1.rc
+	"version.dummy"
+
+1640050641 c:\users\usuario\documents\github\diagbox\version.dummy
+	"version.h"
+
+1640052809 c:\users\usuario\documents\github\diagbox\version.h
+
+1640051352 source:c:\users\usuario\documents\github\diagbox\main.cpp
+	"main.h"
+
+1640052809 c:\users\usuario\documents\github\diagbox\main.h
+	<iostream>
+	<windows.h>
+	<string>
+	<string.h>
+	<iomanip>
+	"diagbox.h"
+	"version.h"
+	"exename.h"
+
+1640050641 c:\users\usuario\documents\github\diagbox\diagbox.h
+	<windows.h>
+	<string>
+
+1640050641 c:\users\usuario\documents\github\diagbox\exename.h
+	<string>
+

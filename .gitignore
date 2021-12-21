@@ -3,3 +3,5 @@
 obj/**/*.o
 obj/**/*.res
 
+bin/32-bits/DiagBox.exe
+bin/64-bits/DiagBox.exe
